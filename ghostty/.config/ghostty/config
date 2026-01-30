@@ -1,0 +1,17 @@
+background-opacity = 0.8
+background-blur = true
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = clipboard
+shell-integration-features = no-cursor
+mouse-hide-while-typing = true
+confirm-close-surface = false
+
+theme = Catppuccin Macchiato
+font-family = Hack
+
+keybind = ctrl+alt+j=goto_split:down
+keybind = ctrl+alt+h=goto_split:left
+keybind = ctrl+alt+l=goto_split:right
+keybind = ctrl+alt+k=goto_split:up
+keybind = ctrl+tab=goto_split:next
