@@ -12,5 +12,6 @@ select = "underline"
 hidden = false
 
 [keys.normal]
-"ret" = "goto_word"
+X = ["extend_line_up", "extend_to_line_bounds"]
 Z = { Q = ":quit!", Z = ":x" }
+"ret" = "goto_word"
