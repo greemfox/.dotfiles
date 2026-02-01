@@ -3,6 +3,10 @@ name = "python"
 auto-format = true
 
 [[language]]
+name = "c"
+auto-format = true
+
+[[language]]
 name = "scheme"
 file-types = ["scm", "ss", "rkt"]
 
