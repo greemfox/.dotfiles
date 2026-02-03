@@ -25,11 +25,8 @@ alias man='qman -a'
 alias rate-mirrors='rate-mirrors --disable-comments --entry-country KZ arch | sudo tee /etc/pacman.d/mirrorlist'
 alias astroterm='astroterm -u -c -a 56 -o 93'
 
-export EDITOR=hx
 export STOW_DIR=/home/greemfox/.dotfiles
+export EDITOR=hx
 function md {
 	mkdir $1 ; cd $1
-}
-function rkt {
-	racket -ie "(enter! (file \"$1\"))"
 }
