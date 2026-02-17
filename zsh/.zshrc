@@ -19,14 +19,13 @@ alias ls='ls --color=auto'
 alias l='ls -lhA'
 
 alias upd='uv tool update --all; eos-update --yay'
-alias hx='helix --vsplit'
 alias man='qman -a'
-
+alias hx='helix'
 alias rate-mirrors='rate-mirrors --disable-comments --entry-country KZ arch | sudo tee /etc/pacman.d/mirrorlist'
 alias astroterm='astroterm -u -c -a 56 -o 93'
 
 export STOW_DIR=/home/greemfox/.dotfiles
-export EDITOR=hx
+export EDITOR=helix
 function md {
 	mkdir $1 ; cd $1
 }
