@@ -18,7 +18,7 @@ alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias l='ls -lhA'
 
-alias upd='eos-update --yay; uv tool update --all'
+alias upd='eos-update; uv tool update --all'
 alias man='qman -a'
 alias hx='helix'
 alias rate-mirrors='rate-mirrors --disable-comments --entry-country KZ arch | sudo tee /etc/pacman.d/mirrorlist'
