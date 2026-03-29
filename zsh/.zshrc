@@ -25,6 +25,7 @@ alias rate-mirrors='rate-mirrors --disable-comments --entry-country KZ arch | su
 alias astroterm='astroterm -u -c -a 56 -o 93'
 
 export STOW_DIR=/home/greemfox/.dotfiles
+export COLORTERM=truecolor
 export EDITOR=helix
 function md {
 	mkdir $1 ; cd $1
