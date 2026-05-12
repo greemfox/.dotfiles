@@ -20,6 +20,7 @@ alias l='ls -lhA'
 
 alias upd='eos-update; uv tool update --all'
 alias man='qman -a'
+alias vac='source ./.venv/bin/activate'
 alias hx='helix'
 alias rate-mirrors='rate-mirrors --disable-comments --entry-country KZ arch | sudo tee /etc/pacman.d/mirrorlist'
 alias astroterm='astroterm -u -c -a 56 -o 93'
