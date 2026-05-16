@@ -1,6 +1,8 @@
-local gh = function(x) return 'https://github.com/' .. x end
-vim.pack.add({gh('Olical/nfnl')})
-
+-- [nfnl] init.fnl
+vim.g.mapleader = ","
+vim.g.maplocalleader = "."
 vim.o.scrolloff = 23
 vim.o.number = true
 vim.o.relativenumber = true
+require("plugins")
+return {}
