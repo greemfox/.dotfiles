@@ -5,6 +5,8 @@
 (set vim.o.scrolloff 23) ; Hail Eris
 (set vim.o.number true)
 (set vim.o.relativenumber true)
+(set vim.o.breakindent true)
+(set vim.o.ignorecase true)
 
 ;; Keybinds
 (vim.keymap.set "n" "<leader>r" "<CMD>restart<CR>" {:desc "Restart nvim"})
@@ -23,10 +25,12 @@
 (fn gh [repo]
   (.. "https://github.com/" repo))
 
-(vim.pack.del ["paredit" "treesitter"])
+(fn setup [plugin]
+  ((. (require plugin) :setup)))
 
 (vim.pack.add [(gh "Olical/nfnl")
 	       (gh "Olical/conjure")
+	       (gh "nvim-mini/mini.nvim")
 	       {:src (gh "julienvincent/nvim-paredit")
 		:name "paredit"}
 	       {:src (gh "nvim-treesitter/nvim-treesitter")
@@ -36,7 +40,10 @@
 		:ensure_installed ["fennel" "scheme"]
 		:build ":TSUpdate"}
 	       (gh "folke/which-key.nvim")])
-((. (require "nvim-paredit") :setup))
+(setup "nvim-paredit")
+(setup "mini.pairs")
+(setup "mini.surround")
+(setup "mini.jump2d")
 
 (set vim.g.conjure#client#scheme#stdio#command "petite")
 (set vim.g.conjure#client#scheme#stdio#prompt_pattern "> $?")
