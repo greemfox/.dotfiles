@@ -11,11 +11,15 @@
 (vim.cmd.colorscheme "catppuccin")
 
 ;; Keybinds
-(λ make-fzf [x]
-   (λ []
-      (vim.cmd (.. "FzfLua " x))))
-
-(vim.keymap.set "n" "<leader>r" "<CMD>restart<CR>" {:desc "Restart nvim"})
+(vim.keymap.set "n" 
+                "<leader>r"
+                "<CMD>restart<CR>"
+                {:desc "Restart nvim"})
+(vim.keymap.set "n"
+                "<leader>pu"
+                (λ []
+                  (vim.pack.update))
+                {:desc "Update plugins"})
 (vim.keymap.set "n"
                 "<leader>pv"
                 (λ []
@@ -26,11 +30,11 @@
                                       (λ [x] x.spec.name))
                                    :totable)))
                 {:desc "Vacuum plugins"})
-(vim.keymap.set "n"
-                "<leader>pu"
-                (λ []
-                  (vim.pack.update))
-                {:desc "Update plugins"})
+
+(λ make-fzf [picker]
+   (λ []
+     (vim.cmd (.. "FzfLua " picker))))
+
 (vim.keymap.set "n"
                 "<leader>ff"
                 (make-fzf "files")
@@ -47,19 +51,6 @@
 ;; Plugins
 (λ gh [repo]
    (.. "https://github.com/" repo))
-
-(λ make-setup [plugin]
-   (. (require plugin) :setup))
-
-(λ hooks [ev]
-   (let [name ev.data.spec.name
-         kind ev.data.kind
-         upd? (or (= kind "install")
-                  (= kind "update"))] 
-     (if (and (= name "parinfer") upd?)
-         (vim.system ["cargo" "build" "--release"] {:cwd ev.data.path}))))
-
-(vim.api.nvim_create_autocmd "PackChanged" {:callback hooks})
 
 (vim.pack.add [(gh "Olical/nfnl")
                (gh "Olical/conjure")
@@ -79,6 +70,9 @@
                {:src (gh "folke/which-key.nvim")
                 :name "whichkey"}])
 
+(λ make-setup [plugin]
+   (. (require plugin) :setup))
+
 ((make-setup "tree-sitter-manager"))
 ((make-setup "mini.surround"))
 ((make-setup "mini.jump2d"))
@@ -87,8 +81,21 @@
 
 (set vim.g.conjure#log#jump_to_latest#enabled true)
 (set vim.g.conjure#log#jump_to_latest#cursor_scroll_position "bottom")
-(set vim.g.conjure#client#scheme#stdio#command "petite")
-(set vim.g.conjure#client#scheme#stdio#prompt_pattern "> $?")
+
+(local repl-socket "/home/greemfox/.local/share/guile-repl.socket")
+(set vim.g.conjure#filetype#scheme "conjure.client.guile.socket")
+(set vim.g.conjure#client#guile#socket#pipename repl-socket)
+
+;; Autocommands
+(λ build [ev]
+   (let [name ev.data.spec.name
+         kind ev.data.kind
+         upd? (or (= kind "install")
+                  (= kind "update"))] 
+     (if (and (= name "parinfer") upd?)
+         (vim.system ["cargo" "build" "--release"] {:cwd ev.data.path}))))
+
+(vim.api.nvim_create_autocmd "PackChanged" {:callback build})
 
 {}
 
