@@ -11,9 +11,13 @@
 (vim.cmd.colorscheme "catppuccin")
 
 ;; Keybinds
+(λ make-fzf [x]
+   (λ []
+      (vim.cmd (.. "FzfLua " x))))
+
 (vim.keymap.set "n" "<leader>r" "<CMD>restart<CR>" {:desc "Restart nvim"})
 (vim.keymap.set "n"
-                "<leader>v"
+                "<leader>pv"
                 (λ []
                   (vim.pack.del (: (: (: (vim.iter (vim.pack.get))
                                          :filter
@@ -23,16 +27,28 @@
                                    :totable)))
                 {:desc "Vacuum plugins"})
 (vim.keymap.set "n"
-                "<leader>u"
+                "<leader>pu"
                 (λ []
                   (vim.pack.update))
                 {:desc "Update plugins"})
+(vim.keymap.set "n"
+                "<leader>ff"
+                (make-fzf "files")
+                {:desc "Find files"})
+(vim.keymap.set "n"
+                "<leader>fb"
+                (make-fzf "buffers")
+                {:desc "Find buffers"})
+(vim.keymap.set "n"
+                "<leader>fh"
+                (make-fzf "helptags")
+                {:desc "Find help"})
 
 ;; Plugins
 (λ gh [repo]
    (.. "https://github.com/" repo))
 
-(λ setup [plugin]
+(λ make-setup [plugin]
    (. (require plugin) :setup))
 
 (λ hooks [ev]
@@ -56,13 +72,21 @@
                 :name "surround"}
                {:src (gh "nvim-mini/mini.jump2d")
                 :name "jump2d"}
+               {:src (gh "nvim-mini/mini.icons")
+                :name "icons"}
+               {:src (gh "ibhagwan/fzf-lua")
+                :name "fzf"}
                {:src (gh "folke/which-key.nvim")
                 :name "whichkey"}])
 
-((setup "tree-sitter-manager"))
-((setup "mini.surround"))
-((setup "mini.jump2d"))
+((make-setup "tree-sitter-manager"))
+((make-setup "mini.surround"))
+((make-setup "mini.jump2d"))
+((make-setup "mini.icons"))
+((make-setup "fzf-lua") ["border-fused"])
 
+(set vim.g.conjure#log#jump_to_latest#enabled true)
+(set vim.g.conjure#log#jump_to_latest#cursor_scroll_position "bottom")
 (set vim.g.conjure#client#scheme#stdio#command "petite")
 (set vim.g.conjure#client#scheme#stdio#prompt_pattern "> $?")
 
