@@ -1,5 +1,7 @@
 -- [nfnl] scheme.fnl
+local script = (vim.fn.stdpath("config") .. "/guile-repl.sh")
+local repl = vim.fn.jobstart({"sh", script})
 local function _1_()
-  return print("Wrapping up the REPL...")
+  return vim.fn.chansend(repl, "\4")
 end
-return vim.system({(vim.fn.stdpath("config") .. "/guile-repl.sh")}, {stderr = false, stdin = false, stdout = false}, _1_)
+return vim.api.nvim_create_autocmd({"VimLeavePre"}, {pattern = {"*"}, callback = _1_})

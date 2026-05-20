@@ -65,12 +65,12 @@ make_setup("mini.icons")()
 make_setup("fzf-lua")({"border-fused"})
 vim.g["conjure#log#jump_to_latest#enabled"] = true
 vim.g["conjure#log#jump_to_latest#cursor_scroll_position"] = "bottom"
-local repl_socket = "/home/greemfox/.local/share/guile-repl.socket"
 vim.g["conjure#filetype#scheme"] = "conjure.client.guile.socket"
+local repl_socket = (vim.env.HOME .. "/.local/share/guile-repl.socket")
 vim.g["conjure#client#guile#socket#pipename"] = repl_socket
 local function build(ev)
   if (nil == ev) then
-    _G.error("Missing argument ev on init.fnl:90", 2)
+    _G.error("Missing argument ev on init.fnl:91", 2)
   else
   end
   local name = ev.data.spec.name

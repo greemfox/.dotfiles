@@ -82,8 +82,9 @@
 (set vim.g.conjure#log#jump_to_latest#enabled true)
 (set vim.g.conjure#log#jump_to_latest#cursor_scroll_position "bottom")
 
-(local repl-socket "/home/greemfox/.local/share/guile-repl.socket")
 (set vim.g.conjure#filetype#scheme "conjure.client.guile.socket")
+(local repl-socket (.. vim.env.HOME
+                       "/.local/share/guile-repl.socket"))
 (set vim.g.conjure#client#guile#socket#pipename repl-socket)
 
 ;; Autocommands
