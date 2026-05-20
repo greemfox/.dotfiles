@@ -77,7 +77,11 @@ local function build(ev)
   local kind = ev.data.kind
   local upd_3f = ((kind == "install") or (kind == "update"))
   if ((name == "parinfer") and upd_3f) then
-    return vim.system({"cargo", "build", "--release"}, {cwd = ev.data.path})
+    vim.system({"cargo", "build", "--release"}, {cwd = ev.data.path})
+  else
+  end
+  if ((name == "treesitter") and upd_3f) then
+    return vim.cmd("TSInstall fennel scheme zsh")
   else
     return nil
   end

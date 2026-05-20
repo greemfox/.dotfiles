@@ -94,7 +94,9 @@
          upd? (or (= kind "install")
                   (= kind "update"))] 
      (if (and (= name "parinfer") upd?)
-         (vim.system ["cargo" "build" "--release"] {:cwd ev.data.path}))))
+         (vim.system ["cargo" "build" "--release"] {:cwd ev.data.path}))
+     (if (and (= name "treesitter") upd?)
+         (vim.cmd "TSInstall fennel scheme zsh"))))
 
 (vim.api.nvim_create_autocmd "PackChanged" {:callback build})
 
