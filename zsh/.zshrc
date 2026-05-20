@@ -16,17 +16,15 @@ bindkey '^U' backward-kill-line
 
 alias ls='ls --color=auto'
 alias l='ls -lhA'
-
 alias upd='eos-update'
-alias man='qman -a'
 alias vac='source ./.venv/bin/activate'
-
 alias mirrorize='rate-mirrors --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist'
 alias astroterm='astroterm -u -c -a 56 -o 93'
 
-export STOW_DIR=/home/greemfox/.dotfiles
 export COLORTERM=truecolor
+export STOW_DIR=$HOME/.dotfiles
 export EDITOR=vi
+export MANPAGER='vi +Man!'
 
 function md {
 	mkdir $1 ; cd $1
