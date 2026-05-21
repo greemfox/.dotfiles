@@ -1,0 +1,41 @@
+{
+  "plugins": {
+    "conjure": {
+      "rev": "f7a375995a19fbf085707ea0fdb1f9c167e27e27",
+      "src": "https://github.com/Olical/conjure"
+    },
+    "fzf": {
+      "rev": "3ff77862f6c62f7b850668435ae43aa026de8758",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "icons": {
+      "rev": "520995f1d75da0e4cc901ee95080b1ff2bc46b94",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
+    "jump2d": {
+      "rev": "1661829512c9cfa9cc641f49836de16b49adb497",
+      "src": "https://github.com/nvim-mini/mini.jump2d"
+    },
+    "nfnl": {
+      "rev": "ac0177c5549df7abba7a19554c18a7765386c894",
+      "src": "https://github.com/Olical/nfnl"
+    },
+    "parinfer": {
+      "rev": "845bfbb9916687cba5b6bae088c9eab70dbb83a3",
+      "src": "https://github.com/eraserhd/parinfer-rust",
+      "version": "'master'"
+    },
+    "surround": {
+      "rev": "c375ea503646fe8393593b5fb8a40406eaa437b2",
+      "src": "https://github.com/nvim-mini/mini.surround"
+    },
+    "treesitter": {
+      "rev": "f18e545c6ccbbae9875e63a2a7b8e8a9678a242e",
+      "src": "https://github.com/romus204/tree-sitter-manager.nvim"
+    },
+    "whichkey": {
+      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
+      "src": "https://github.com/folke/which-key.nvim"
+    }
+  }
+}

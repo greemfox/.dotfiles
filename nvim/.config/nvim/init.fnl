@@ -48,6 +48,19 @@
                 (make-fzf "helptags")
                 {:desc "Find help"})
 
+;; Autocommands
+(λ build [ev]
+   (let [name ev.data.spec.name
+         kind ev.data.kind
+         upd? (or (= kind "install")
+                  (= kind "update"))] 
+     (if (and (= name "parinfer") upd?)
+         (vim.system ["cargo" "build" "--release"] {:cwd ev.data.path}))
+     (if (and (= name "treesitter") upd?)
+         (vim.cmd "TSInstall lua fennel scheme zsh"))))
+
+(vim.api.nvim_create_autocmd "PackChanged" {:callback build})
+
 ;; Plugins
 (λ gh [repo]
    (.. "https://github.com/" repo))
@@ -83,22 +96,8 @@
 (set vim.g.conjure#log#jump_to_latest#cursor_scroll_position "bottom")
 
 (set vim.g.conjure#filetype#scheme "conjure.client.guile.socket")
-(local repl-socket (.. vim.env.HOME
-                       "/.local/share/guile-repl.socket"))
-(set vim.g.conjure#client#guile#socket#pipename repl-socket)
-
-;; Autocommands
-(λ build [ev]
-   (let [name ev.data.spec.name
-         kind ev.data.kind
-         upd? (or (= kind "install")
-                  (= kind "update"))] 
-     (if (and (= name "parinfer") upd?)
-         (vim.system ["cargo" "build" "--release"] {:cwd ev.data.path}))
-     (if (and (= name "treesitter") upd?)
-         (vim.cmd "TSInstall fennel scheme zsh"))))
-
-(vim.api.nvim_create_autocmd "PackChanged" {:callback build})
+(let [repl-socket (.. vim.env.HOME "/.local/share/guile-repl.socket")]
+     (set vim.g.conjure#client#guile#socket#pipename repl-socket))
 
 {}
 
