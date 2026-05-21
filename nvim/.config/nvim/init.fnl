@@ -6,11 +6,15 @@
 (set vim.o.relativenumber true)
 (set vim.o.breakindent true)
 (set vim.o.ignorecase true)
-(set vim.o.scrolloff 23) ; Hail Eris
+(set vim.o.scrolloff 23)
+(set vim.o.guicursor "i-ci-ve:block-blinkon200-blinkoff300")
 
 (vim.cmd.colorscheme "catppuccin")
 
 ;; Keybinds
+(vim.keymap.set "i" 
+                ""
+                "λ")
 (vim.keymap.set "n" 
                 "<leader>r"
                 "<CMD>restart<CR>"
@@ -30,6 +34,7 @@
                                       (λ [x] x.spec.name))
                                    :totable)))
                 {:desc "Vacuum plugins"})
+
 
 (λ make-fzf [picker]
    (λ []
