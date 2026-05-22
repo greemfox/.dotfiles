@@ -31,3 +31,7 @@ function md {
 	mkdir $1 ; cd $1
 }
 
+function cdot {
+    cp "$HOME/.config/c/.clang-format" .
+    cp "$HOME/.config/c/compile_flags.txt" .
+}

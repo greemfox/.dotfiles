@@ -7,15 +7,15 @@
 (set vim.o.breakindent true)
 (set vim.o.ignorecase true)
 (set vim.o.scrolloff 23)
-(set vim.o.guicursor "i-ci-ve:block-blinkon200-blinkoff300")
+(set vim.o.guicursor "i-ci-ve:hor23-blinkon200-blinkoff300")
 
 (vim.cmd.colorscheme "catppuccin")
 
 ;; Keybinds
-(vim.keymap.set "i" 
+(vim.keymap.set "i"
                 ""
                 "λ")
-(vim.keymap.set "n" 
+(vim.keymap.set "n"
                 "<leader>r"
                 "<CMD>restart<CR>"
                 {:desc "Restart nvim"})
@@ -58,7 +58,7 @@
    (let [name ev.data.spec.name
          kind ev.data.kind
          upd? (or (= kind "install")
-                  (= kind "update"))] 
+                  (= kind "update"))]
      (if (and (= name "parinfer") upd?)
          (vim.system ["cargo" "build" "--release"] {:cwd ev.data.path}))
      (if (and (= name "treesitter") upd?)
@@ -105,4 +105,3 @@
      (set vim.g.conjure#client#guile#socket#pipename repl-socket))
 
 {}
-

@@ -2,4 +2,3 @@
 SOCKET="$HOME/.local/share/guile-repl.socket"
 rm -f "$SOCKET"
 guile --listen="$SOCKET"
-

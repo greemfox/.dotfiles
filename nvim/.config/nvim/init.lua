@@ -6,7 +6,7 @@ vim.o.relativenumber = true
 vim.o.breakindent = true
 vim.o.ignorecase = true
 vim.o.scrolloff = 23
-vim.o.guicursor = "i-ci-ve:block-blinkon200-blinkoff300"
+vim.o.guicursor = "i-ci-ve:hor23-blinkon200-blinkoff300"
 vim.cmd.colorscheme("catppuccin")
 vim.keymap.set("i", "\f", "\206\187")
 vim.keymap.set("n", "<leader>r", "<CMD>restart<CR>", {desc = "Restart nvim"})
