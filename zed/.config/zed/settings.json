@@ -7,28 +7,31 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-    "disable_ai": true,
-    "autosave": "on_focus_change",
-    "ui_font_family": ".SystemUIFont",
-    "buffer_font_family": "Hack",
-    "session": {
-        "trust_all_worktrees": true
+  "disable_ai": true,
+  "autosave": "on_focus_change",
+  "ui_font_family": ".SystemUIFont",
+  "buffer_font_family": "Hack",
+  "terminal": {
+    "copy_on_select": true,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false,
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Macchiato",
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["ty", "ruff", "!basedpyright"],
     },
-    "telemetry": {
-        "diagnostics": true,
-        "metrics": false
-    },
-    "ui_font_size": 16,
-    "buffer_font_size": 14,
-    "theme": {
-        "mode": "system",
-        "light": "Catppuccin Latte",
-        "dark": "Catppuccin Macchiato"
-    },
-    "languages": {
-        "Python": {
-            "language_servers": ["ty", "ruff", "!basedpyright"]
-        },
-        "C": { "format_on_save": "on" }
-    }
+    "C": { "format_on_save": "on" },
+  },
 }
