@@ -7,7 +7,7 @@
 // from the command palette.
 [
   {
-    "context": "Editor",
+    "context": "Editor && mode == full",
     "bindings": {
       "ctrl-enter": "editor::NewlineBelow",
       "ctrl-shift-enter": "editor::NewlineAbove",
