@@ -16,29 +16,30 @@
                 ""
                 "λ")
 (vim.keymap.set "n"
+                "<leader>l"
+                "<CMD>!love .<CR>"
+                {:desc "Love <3"})
+(vim.keymap.set "n"
                 "<leader>r"
                 "<CMD>restart<CR>"
                 {:desc "Restart nvim"})
 (vim.keymap.set "n"
                 "<leader>pu"
-                (λ []
-                  (vim.pack.update))
+                #(vim.pack.update)
                 {:desc "Update plugins"})
 (vim.keymap.set "n"
                 "<leader>pv"
-                (λ []
-                  (vim.pack.del (: (: (: (vim.iter (vim.pack.get))
-                                         :filter
-                                         (λ [x] (not x.active)))
-                                      :map
-                                      (λ [x] x.spec.name))
-                                   :totable)))
+                #(vim.pack.del (: (: (: (vim.iter (vim.pack.get))
+                                        :filter
+                                        (λ [x] (not x.active)))
+                                     :map
+                                     (λ [x] x.spec.name))
+                                  :totable))
                 {:desc "Vacuum plugins"})
 
 
 (λ make-fzf [picker]
-   (λ []
-     (vim.cmd (.. "FzfLua " picker))))
+  #(vim.cmd (.. "FzfLua " picker)))
 
 (vim.keymap.set "n"
                 "<leader>ff"
