@@ -2,6 +2,7 @@
 (set vim.g.mapleader " ")
 (set vim.g.maplocalleader ",")
 
+(set vim.o.exrc true)
 (set vim.o.number true)
 (set vim.o.relativenumber true)
 (set vim.o.breakindent true)
@@ -15,10 +16,6 @@
 (vim.keymap.set "i"
                 ""
                 "λ")
-(vim.keymap.set "n"
-                "<leader>l"
-                "<CMD>!love .<CR>"
-                {:desc "Love <3"})
 (vim.keymap.set "n"
                 "<leader>r"
                 "<CMD>restart<CR>"
@@ -60,8 +57,6 @@
          kind ev.data.kind
          upd? (or (= kind "install")
                   (= kind "update"))]
-     (if (and (= name "parinfer") upd?)
-         (vim.system ["cargo" "build" "--release"] {:cwd ev.data.path}))
      (if (and (= name "treesitter") upd?)
          (vim.cmd "TSInstall lua fennel scheme zsh"))))
 
@@ -73,7 +68,7 @@
 
 (vim.pack.add [(gh "Olical/nfnl")
                (gh "Olical/conjure")
-               {:src (gh "eraserhd/parinfer-rust")
+               {:src (gh "gpanders/nvim-parinfer")
                 :name "parinfer"
                 :version "master"}
                {:src (gh "romus204/tree-sitter-manager.nvim")

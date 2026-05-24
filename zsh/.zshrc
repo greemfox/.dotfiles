@@ -16,8 +16,9 @@ bindkey '^U' backward-kill-line
 
 alias ls='ls --color=auto'
 alias l='ls -lhA'
+alias pls='sudo !!'
 alias vi='nvim'
-alias upd='eos-update'
+
 alias vac='source ./.venv/bin/activate'
 alias mirrorize='rate-mirrors --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist'
 alias astroterm='astroterm -u -c -a 56 -o 93'
@@ -32,6 +33,9 @@ function md {
 }
 
 function cdot {
-    cp "$HOME/.config/c/.clang-format" .
-    cp "$HOME/.config/c/compile_flags.txt" .
+	cp -av "$HOME/.config/c/." .
+}
+
+function ldot {
+	cp -a "$HOME/.config/luv-fnl-nvm/." . && echo 'Ready to go <3'
 }
