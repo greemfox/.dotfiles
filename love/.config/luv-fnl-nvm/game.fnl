@@ -3,7 +3,7 @@
 (global state {})
 
 (fn love.load []
-  (repl.start) ; this is important for the REPL to work
+  (repl.start)
   (set state.x 420)
   (set state.y 69)
   (set state.r 5)

@@ -1,17 +1,12 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=$HOME/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/greemfox/.zshrc'
-
+zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
 
-source ~/.config/minimal.zsh
+source $HOME/.config/minimal.zsh
 bindkey '^U' backward-kill-line
 
 alias ls='ls --color=auto'
@@ -28,14 +23,15 @@ export STOW_DIR=$HOME/.dotfiles
 export EDITOR=nvim
 export MANPAGER='nvim +Man!'
 
-function md {
-	mkdir $1 ; cd $1
+function mkcd {
+	mkdir -p $1 && cd '$1'
 }
 
 function cdot {
-	cp -av "$HOME/.config/c/." .
+	cp -av '$HOME/.config/c/.' .
 }
 
 function ldot {
-	cp -a "$HOME/.config/luv-fnl-nvm/." . && echo 'Ready to go <3'
+	trustmebro=(nvim -es +trust .nvim.lua +q!)
+	cp -a '$HOME/.config/luv-fnl-nvm/.' . && $trustmebro && echo '\nReady to go <3'
 }
