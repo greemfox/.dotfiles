@@ -1,5 +1,5 @@
 -- bootstrap the compiler (https://fennel-lang.org/setup#embedding-fennel)
-_G.fennel = require("lib.fennel")
+_G.fennel = require("fennel")
 table.insert(package.loaders, fennel.make_searcher({
 	correlate=true -- try to match line numbers for stack trace
 }))

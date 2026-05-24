@@ -69,10 +69,11 @@
 (vim.pack.add [(gh "Olical/nfnl")
                (gh "Olical/conjure")
                {:src (gh "gpanders/nvim-parinfer")
-                :name "parinfer"
-                :version "master"}
+                :name "parinfer"}
                {:src (gh "romus204/tree-sitter-manager.nvim")
                 :name "treesitter"}
+               {:src (gh "neovim/nvim-lspconfig")
+                :name "lspconfig"}
                {:src (gh "nvim-mini/mini.surround")
                 :name "surround"}
                {:src (gh "nvim-mini/mini.jump2d")
@@ -99,5 +100,7 @@
 (set vim.g.conjure#filetype#scheme "conjure.client.guile.socket")
 (let [repl-socket (.. vim.env.HOME "/.local/share/guile-repl.socket")]
      (set vim.g.conjure#client#guile#socket#pipename repl-socket))
+
+(vim.lsp.enable "fennel_ls")
 
 {}
