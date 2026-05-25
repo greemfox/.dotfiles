@@ -89,7 +89,7 @@
 ((make-setup "mini.surround"))
 ((make-setup "mini.jump2d"))
 ((make-setup "mini.icons"))
-((make-setup "fzf-lua") ["border-fused"])
+((make-setup "fzf-lua") ["border-fused" "skim"])
 
 (set vim.g.conjure#log#jump_to_latest#enabled true)
 (set vim.g.conjure#log#jump_to_latest#cursor_scroll_position "bottom")

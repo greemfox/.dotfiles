@@ -21,7 +21,7 @@ export COLORTERM=truecolor
 export STOW_DIR=$HOME/.dotfiles
 export EDITOR=nvim
 export MANPAGER="nvim +Man!"
-export LUA_PATH=";;$HOME/.local/share/lua/?.lua"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 function pls {
 	sudo $(fc -nl -1)

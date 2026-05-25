@@ -79,7 +79,7 @@ make_setup("tree-sitter-manager")()
 make_setup("mini.surround")()
 make_setup("mini.jump2d")()
 make_setup("mini.icons")()
-make_setup("fzf-lua")({"border-fused"})
+make_setup("fzf-lua")({"border-fused", "skim"})
 vim.g["conjure#log#jump_to_latest#enabled"] = true
 vim.g["conjure#log#jump_to_latest#cursor_scroll_position"] = "bottom"
 vim.g["conjure#filetype#scheme"] = "conjure.client.guile.socket"
