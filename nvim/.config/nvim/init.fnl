@@ -2,7 +2,6 @@
 (set vim.g.mapleader " ")
 (set vim.g.maplocalleader ",")
 
-(set vim.o.exrc true)
 (set vim.o.number true)
 (set vim.o.relativenumber true)
 (set vim.o.breakindent true)
@@ -73,8 +72,6 @@
                {:src (gh "romus204/tree-sitter-manager.nvim")
                 :name "treesitter"}
                {:src (gh "neovim/nvim-lspconfig")
-                :name "lspconfig"}
-               {:src (gh "nvim-mini/mini.surround")
                 :name "surround"}
                {:src (gh "nvim-mini/mini.jump2d")
                 :name "jump2d"}
@@ -100,7 +97,5 @@
 (set vim.g.conjure#filetype#scheme "conjure.client.guile.socket")
 (let [repl-socket (.. vim.env.HOME "/.local/share/guile-repl.socket")]
      (set vim.g.conjure#client#guile#socket#pipename repl-socket))
-
-(vim.lsp.enable "fennel_ls")
 
 {}

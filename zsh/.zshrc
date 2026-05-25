@@ -34,8 +34,3 @@ function mkcd {
 function cdot {
 	cp -av "$HOME/.config/c/." .
 }
-
-function ldot {
-	trustmebro=(nvim -es +trust .nvim.lua +q!)
-	cp -a "$HOME/.config/luv-fnl-nvm/." . && $trustmebro && echo "Ready to go <3"
-}
