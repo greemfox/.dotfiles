@@ -12,9 +12,7 @@
 (vim.cmd.colorscheme "catppuccin")
 
 ;; Keybinds
-(vim.keymap.set "i"
-                ""
-                "λ")
+(vim.keymap.set "i" "" "λ")
 (vim.keymap.set "n"
                 "<leader>r"
                 "<CMD>restart<CR>"
@@ -27,9 +25,9 @@
                 "<leader>pv"
                 #(vim.pack.del (: (: (: (vim.iter (vim.pack.get))
                                         :filter
-                                        (λ [x] (not x.active)))
+                                        #(not $.active))
                                      :map
-                                     (λ [x] x.spec.name))
+                                     #($.spec.name))
                                   :totable))
                 {:desc "Vacuum plugins"})
 
