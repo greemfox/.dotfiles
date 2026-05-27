@@ -72,6 +72,8 @@
                {:src (gh "romus204/tree-sitter-manager.nvim")
                 :name "treesitter"}
                {:src (gh "neovim/nvim-lspconfig")
+                :name "lspconfig"}
+               {:src (gh "nvim-mini/mini.surround")
                 :name "surround"}
                {:src (gh "nvim-mini/mini.jump2d")
                 :name "jump2d"}
@@ -90,6 +92,9 @@
 ((make-setup "mini.jump2d"))
 ((make-setup "mini.icons"))
 ((make-setup "fzf-lua") ["border-fused" "skim"])
+
+;; Languages
+(vim.lsp.enable "clojure_lsp")
 
 (set vim.g.conjure#log#jump_to_latest#enabled true)
 (set vim.g.conjure#log#jump_to_latest#cursor_scroll_position "bottom")

@@ -23,6 +23,10 @@ export EDITOR=nvim
 export MANPAGER="nvim +Man!"
 export PATH="$PATH:$HOME/.cargo/bin"
 
+export BUN_INSTALL="$HOME/.bun"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+export PATH="$PATH:$BUN_INSTALL/bin"
+
 function pls {
 	sudo $(fc -nl -1)
 }

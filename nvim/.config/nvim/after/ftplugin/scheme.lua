@@ -1,4 +1,3 @@
 -- [nfnl] scheme.fnl
 local script = (vim.env.HOME .. "/.config" .. "/guile-repl.sh")
-local repl = vim.fn.jobstart({"sh", script})
-return nil
+return vim.fn.jobstart({"sh", script})

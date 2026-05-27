@@ -67,10 +67,10 @@ local function gh(repo)
   end
   return ("https://github.com/" .. repo)
 end
-vim.pack.add({gh("Olical/nfnl"), gh("Olical/conjure"), {src = gh("gpanders/nvim-parinfer"), name = "parinfer"}, {src = gh("romus204/tree-sitter-manager.nvim"), name = "treesitter"}, {src = gh("neovim/nvim-lspconfig"), name = "surround"}, {src = gh("nvim-mini/mini.jump2d"), name = "jump2d"}, {src = gh("nvim-mini/mini.icons"), name = "icons"}, {src = gh("ibhagwan/fzf-lua"), name = "fzf"}, {src = gh("folke/which-key.nvim"), name = "whichkey"}})
+vim.pack.add({gh("Olical/nfnl"), gh("Olical/conjure"), {src = gh("gpanders/nvim-parinfer"), name = "parinfer"}, {src = gh("romus204/tree-sitter-manager.nvim"), name = "treesitter"}, {src = gh("neovim/nvim-lspconfig"), name = "lspconfig"}, {src = gh("nvim-mini/mini.surround"), name = "surround"}, {src = gh("nvim-mini/mini.jump2d"), name = "jump2d"}, {src = gh("nvim-mini/mini.icons"), name = "icons"}, {src = gh("ibhagwan/fzf-lua"), name = "fzf"}, {src = gh("folke/which-key.nvim"), name = "whichkey"}})
 local function make_setup(plugin)
   if (nil == plugin) then
-    _G.error("Missing argument plugin on init.fnl:85", 2)
+    _G.error("Missing argument plugin on init.fnl:87", 2)
   else
   end
   return require(plugin).setup
@@ -80,6 +80,7 @@ make_setup("mini.surround")()
 make_setup("mini.jump2d")()
 make_setup("mini.icons")()
 make_setup("fzf-lua")({"border-fused", "skim"})
+vim.lsp.enable("clojure_lsp")
 vim.g["conjure#log#jump_to_latest#enabled"] = true
 vim.g["conjure#log#jump_to_latest#cursor_scroll_position"] = "bottom"
 vim.g["conjure#filetype#scheme"] = "conjure.client.guile.socket"
