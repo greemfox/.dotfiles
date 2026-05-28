@@ -9,11 +9,11 @@ vim.o.scrolloff = 23
 vim.o.guicursor = "i-ci-ve:hor23-blinkon200-blinkoff300"
 vim.cmd.colorscheme("catppuccin")
 vim.keymap.set("i", "\f", "\206\187")
-vim.keymap.set("n", "<leader>r", "<CMD>restart<CR>", {desc = "Restart nvim"})
+vim.keymap.set("n", "<leader>r", "<CMD>restart<CR>", {desc = "Restart Neovim"})
 local function _1_()
   return vim.pack.update()
 end
-vim.keymap.set("n", "<leader>pu", _1_, {desc = "Update plugins"})
+vim.keymap.set("n", "<leader>pu", _1_, {desc = "Plugin update"})
 local function _2_()
   local function _3_(_2410)
     return not _2410.active
@@ -23,10 +23,10 @@ local function _2_()
   end
   return vim.pack.del(vim.iter(vim.pack.get()):filter(_3_):map(_4_):totable())
 end
-vim.keymap.set("n", "<leader>pv", _2_, {desc = "Vacuum plugins"})
+vim.keymap.set("n", "<leader>pv", _2_, {desc = "Plugin vacuum"})
 local function make_fzf(picker)
   if (nil == picker) then
-    _G.error("Missing argument picker on init.fnl:35", 2)
+    _G.error("Missing argument picker on init.fnl:34", 2)
   else
   end
   local function _6_()
@@ -37,9 +37,10 @@ end
 vim.keymap.set("n", "<leader>ff", make_fzf("files"), {desc = "Find files"})
 vim.keymap.set("n", "<leader>fb", make_fzf("buffers"), {desc = "Find buffers"})
 vim.keymap.set("n", "<leader>fh", make_fzf("helptags"), {desc = "Find help"})
+vim.keymap.set("n", "<leader>fg", make_fzf("grep_visual"), {desc = "Find grep"})
 local function build(ev)
   if (nil == ev) then
-    _G.error("Missing argument ev on init.fnl:52", 2)
+    _G.error("Missing argument ev on init.fnl:55", 2)
   else
   end
   local name = ev.data.spec.name
@@ -54,7 +55,7 @@ end
 vim.api.nvim_create_autocmd("PackChanged", {callback = build})
 local function gh(repo)
   if (nil == repo) then
-    _G.error("Missing argument repo on init.fnl:63", 2)
+    _G.error("Missing argument repo on init.fnl:66", 2)
   else
   end
   return ("https://github.com/" .. repo)
@@ -62,7 +63,7 @@ end
 vim.pack.add({gh("Olical/nfnl"), gh("Olical/conjure"), {src = gh("gpanders/nvim-parinfer"), name = "parinfer"}, {src = gh("romus204/tree-sitter-manager.nvim"), name = "treesitter"}, {src = gh("neovim/nvim-lspconfig"), name = "lspconfig"}, {src = gh("nvim-mini/mini.surround"), name = "surround"}, {src = gh("nvim-mini/mini.jump2d"), name = "jump2d"}, {src = gh("nvim-mini/mini.icons"), name = "icons"}, {src = gh("ibhagwan/fzf-lua"), name = "fzf"}, {src = gh("folke/which-key.nvim"), name = "whichkey"}})
 local function make_setup(plugin)
   if (nil == plugin) then
-    _G.error("Missing argument plugin on init.fnl:85", 2)
+    _G.error("Missing argument plugin on init.fnl:88", 2)
   else
   end
   return require(plugin).setup

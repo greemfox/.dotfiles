@@ -16,11 +16,11 @@
 (vim.keymap.set "n"
                 "<leader>r"
                 "<CMD>restart<CR>"
-                {:desc "Restart nvim"})
+                {:desc "Restart Neovim"})
 (vim.keymap.set "n"
                 "<leader>pu"
                 #(vim.pack.update)
-                {:desc "Update plugins"})
+                {:desc "Plugin update"})
 (vim.keymap.set "n"
                 "<leader>pv"
                 #(vim.pack.del (: (: (: (vim.iter (vim.pack.get))
@@ -29,8 +29,7 @@
                                      :map
                                      #($.spec.name))
                                   :totable))
-                {:desc "Vacuum plugins"})
-
+                {:desc "Plugin vacuum"})
 
 (λ make-fzf [picker]
   #(vim.cmd (.. "FzfLua " picker)))
@@ -47,6 +46,10 @@
                 "<leader>fh"
                 (make-fzf "helptags")
                 {:desc "Find help"})
+(vim.keymap.set "n"
+                "<leader>fg"
+                (make-fzf "grep_visual")
+                {:desc "Find grep"})
 
 ;; Autocommands
 (λ build [ev]
