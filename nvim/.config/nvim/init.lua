@@ -38,9 +38,11 @@ vim.keymap.set("n", "<leader>ff", make_fzf("files"), {desc = "Find files"})
 vim.keymap.set("n", "<leader>fb", make_fzf("buffers"), {desc = "Find buffers"})
 vim.keymap.set("n", "<leader>fh", make_fzf("helptags"), {desc = "Find help"})
 vim.keymap.set("n", "<leader>fg", make_fzf("grep_visual"), {desc = "Find grep"})
+vim.keymap.set("n", "<leader>fd", make_fzf("diagnostics_document"), {desc = "Find diagnostics"})
+vim.keymap.set("n", "<leader>fk", make_fzf("keymaps"), {desc = "Find keymaps"})
 local function build(ev)
   if (nil == ev) then
-    _G.error("Missing argument ev on init.fnl:55", 2)
+    _G.error("Missing argument ev on init.fnl:63", 2)
   else
   end
   local name = ev.data.spec.name
@@ -55,7 +57,7 @@ end
 vim.api.nvim_create_autocmd("PackChanged", {callback = build})
 local function gh(repo)
   if (nil == repo) then
-    _G.error("Missing argument repo on init.fnl:66", 2)
+    _G.error("Missing argument repo on init.fnl:74", 2)
   else
   end
   return ("https://github.com/" .. repo)
@@ -63,7 +65,7 @@ end
 vim.pack.add({gh("Olical/nfnl"), gh("Olical/conjure"), {src = gh("gpanders/nvim-parinfer"), name = "parinfer"}, {src = gh("romus204/tree-sitter-manager.nvim"), name = "treesitter"}, {src = gh("neovim/nvim-lspconfig"), name = "lspconfig"}, {src = gh("nvim-mini/mini.surround"), name = "surround"}, {src = gh("nvim-mini/mini.jump2d"), name = "jump2d"}, {src = gh("nvim-mini/mini.icons"), name = "icons"}, {src = gh("ibhagwan/fzf-lua"), name = "fzf"}, {src = gh("folke/which-key.nvim"), name = "whichkey"}})
 local function make_setup(plugin)
   if (nil == plugin) then
-    _G.error("Missing argument plugin on init.fnl:88", 2)
+    _G.error("Missing argument plugin on init.fnl:96", 2)
   else
   end
   return require(plugin).setup

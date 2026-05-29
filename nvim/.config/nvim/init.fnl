@@ -50,6 +50,14 @@
                 "<leader>fg"
                 (make-fzf "grep_visual")
                 {:desc "Find grep"})
+(vim.keymap.set "n"
+                "<leader>fd"
+                (make-fzf "diagnostics_document")
+                {:desc "Find diagnostics"})
+(vim.keymap.set "n"
+                "<leader>fk"
+                (make-fzf "keymaps")
+                {:desc "Find keymaps"})
 
 ;; Autocommands
 (λ build [ev]
