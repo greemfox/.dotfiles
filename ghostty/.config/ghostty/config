@@ -10,8 +10,9 @@ confirm-close-surface = false
 theme = Catppuccin Macchiato
 font-family = Hack
 
-keybind = ctrl+alt+j=goto_split:down
-keybind = ctrl+alt+h=goto_split:left
-keybind = ctrl+alt+l=goto_split:right
-keybind = ctrl+alt+k=goto_split:up
+keybind = alt+j=goto_split:down
+keybind = alt+h=goto_split:left
+keybind = alt+l=goto_split:right
+keybind = alt+k=goto_split:up
 keybind = ctrl+tab=goto_split:next
+keybind = ctrl+shift+tab=goto_split:previous
