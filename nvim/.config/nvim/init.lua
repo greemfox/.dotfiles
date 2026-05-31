@@ -1,6 +1,8 @@
 -- [nfnl] init.fnl
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.breakindent = true
@@ -26,7 +28,7 @@ end
 vim.keymap.set("n", "<leader>pv", _2_, {desc = "Plugin vacuum"})
 local function make_fzf(picker)
   if (nil == picker) then
-    _G.error("Missing argument picker on init.fnl:34", 2)
+    _G.error("Missing argument picker on init.fnl:36", 2)
   else
   end
   local function _6_()
@@ -42,7 +44,7 @@ vim.keymap.set("n", "<leader>fd", make_fzf("diagnostics_document"), {desc = "Fin
 vim.keymap.set("n", "<leader>fk", make_fzf("keymaps"), {desc = "Find keymaps"})
 local function build(ev)
   if (nil == ev) then
-    _G.error("Missing argument ev on init.fnl:63", 2)
+    _G.error("Missing argument ev on init.fnl:65", 2)
   else
   end
   local name = ev.data.spec.name
@@ -57,7 +59,7 @@ end
 vim.api.nvim_create_autocmd("PackChanged", {callback = build})
 local function gh(repo)
   if (nil == repo) then
-    _G.error("Missing argument repo on init.fnl:74", 2)
+    _G.error("Missing argument repo on init.fnl:76", 2)
   else
   end
   return ("https://github.com/" .. repo)
@@ -65,7 +67,7 @@ end
 vim.pack.add({gh("Olical/nfnl"), gh("Olical/conjure"), {src = gh("gpanders/nvim-parinfer"), name = "parinfer"}, {src = gh("romus204/tree-sitter-manager.nvim"), name = "treesitter"}, {src = gh("neovim/nvim-lspconfig"), name = "lspconfig"}, {src = gh("nvim-mini/mini.surround"), name = "surround"}, {src = gh("nvim-mini/mini.jump2d"), name = "jump2d"}, {src = gh("nvim-mini/mini.icons"), name = "icons"}, {src = gh("ibhagwan/fzf-lua"), name = "fzf"}, {src = gh("folke/which-key.nvim"), name = "whichkey"}})
 local function make_setup(plugin)
   if (nil == plugin) then
-    _G.error("Missing argument plugin on init.fnl:96", 2)
+    _G.error("Missing argument plugin on init.fnl:98", 2)
   else
   end
   return require(plugin).setup
