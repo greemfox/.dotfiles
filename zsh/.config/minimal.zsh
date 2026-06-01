@@ -2,7 +2,7 @@
 MNML_OK_COLOR="${MNML_OK_COLOR:-2}"
 MNML_ERR_COLOR="${MNML_ERR_COLOR:-1}"
 
-MNML_USER_CHAR="${MNML_USER_CHAR:-∇}"
+MNML_USER_CHAR="${MNML_USER_CHAR:-λ}"
 MNML_INSERT_CHAR="${MNML_INSERT_CHAR:-›}"
 MNML_NORMAL_CHAR="${MNML_NORMAL_CHAR:-·}"
 MNML_ELLIPSIS_CHAR="${MNML_ELLIPSIS_CHAR:-..}"
@@ -10,10 +10,7 @@ MNML_BGJOB_MODE=${MNML_BGJOB_MODE:-4}
 
 [ "${+MNML_PROMPT}" -eq 0 ] && MNML_PROMPT=(mnml_ssh mnml_pyenv mnml_status mnml_keymap)
 [ "${+MNML_RPROMPT}" -eq 0 ] && MNML_RPROMPT=('mnml_cwd 2 0' mnml_git)
-[ "${+MNML_INFOLN}" -eq 0 ] && MNML_INFOLN=(mnml_err mnml_jobs mnml_uhp mnml_files)
-
-[ "${+MNML_MAGICENTER}" -eq 0 ] && MNML_MAGICENTER=(mnml_me_dirs mnml_me_ls mnml_me_git)
-
+[ "${+MNML_INFOLN}" -eq 0 ] && MNML_INFOLN=(mnml_err mnml_jobs mnml_uhp)
 
 # Components
 function mnml_status {
@@ -121,11 +118,9 @@ function mnml_hg_no_color {
 
 function mnml_uhp {
     local _w="%{\e[0m%}"
-    local _g="%{\e[38;5;244m%}"
-    local cwd="%~"
-    cwd="${(%)cwd}"
-
-    printf '%b' "$_g%n$_w@$_g%m$_w:$_g${cwd//\//$_w/$_g}$_w"
+    local _t="%{\e[38;2;139;213;202m%}"
+    local _s="%{\e[38;2;125;196;228m%}"
+    printf '%b' "$_t%n$_s@$_t%m $_s%D{%Y-%m-%d %H:%M}$_w"
 }
 
 function mnml_ssh {
@@ -178,29 +173,6 @@ function mnml_files {
     printf '%b' "$output"
 }
 
-# Magic enter functions
-function mnml_me_dirs {
-    local _w="\e[0m"
-    local _g="\e[38;5;244m"
-
-    if [ "$(dirs -p | sed -n '$=')" -gt 1 ]; then
-        local stack="$(dirs)"
-        echo "$_g${stack//\//$_w/$_g}$_w"
-    fi
-}
-
-function mnml_me_ls {
-    if [ "$(uname)" = "Darwin" ] && ! ls --version &> /dev/null; then
-        COLUMNS=$COLUMNS CLICOLOR_FORCE=1 ls -C -G -F
-    else
-        env ls -C -F --color="always" -w $COLUMNS
-    fi
-}
-
-function mnml_me_git {
-    git -c color.status=always status -sb 2> /dev/null
-}
-
 # Wrappers & utils
 # join outpus of components
 function _mnml_wrap {
@@ -223,21 +195,6 @@ function _mnml_iline {
     echo "${(%)1}"
 }
 
-# display magic enter
-function _mnml_me {
-    local -a output
-    output=()
-    local cmd_out=""
-    local cmd
-    for cmd in $MNML_MAGICENTER; do
-        cmd_out="$(eval "$cmd")"
-        if [ -n "$cmd_out" ]; then
-            output+="$cmd_out"
-        fi
-    done
-    printf '%b' "${(j:\n:)output}" | less -XFR
-}
-
 # capture exit status and reset prompt
 function _mnml_zle-line-init {
     MNML_LAST_ERR="$?" # I need to capture this ASAP
@@ -253,7 +210,6 @@ function _mnml_zle-keymap-select {
 function _mnml_buffer-empty {
     if [ -z "$BUFFER" ]; then
         _mnml_iline "$(_mnml_wrap MNML_INFOLN)"
-        _mnml_me
         zle redisplay
     else
         zle accept-line

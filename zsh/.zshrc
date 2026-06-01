@@ -6,8 +6,8 @@ zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 
-source $HOME/.config/minimal.zsh
 bindkey "^U" backward-kill-line
+source "$HOME/.config/minimal.zsh"
 
 alias ls="ls --color=auto"
 alias l="ls -lhA"
@@ -15,7 +15,6 @@ alias vi="nvim"
 alias fd="fd -E /mnt/c"
 alias vac="source ./.venv/bin/activate"
 alias mirrorize="rate-mirrors --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist"
-alias astroterm="astroterm -u -c -a 56 -o 93"
 
 export COLORTERM=truecolor
 export STOW_DIR=$HOME/.dotfiles
