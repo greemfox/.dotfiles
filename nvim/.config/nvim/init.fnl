@@ -8,6 +8,7 @@
 (set vim.o.relativenumber true)
 (set vim.o.breakindent true)
 (set vim.o.ignorecase true)
+(set vim.o.linebreak true)
 (set vim.o.scrolloff 23)
 (set vim.o.guicursor "i-ci-ve:hor23-blinkon200-blinkoff300")
 
