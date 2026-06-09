@@ -9,6 +9,7 @@ compinit
 bindkey "^U" backward-kill-line
 source "$HOME/.config/minimal.zsh"
 
+eval "$(zoxide init zsh --cmd=cd)"
 alias ls="ls --color=auto"
 alias l="ls -lhA"
 alias vi="nvim"
@@ -21,10 +22,6 @@ export STOW_DIR=$HOME/.dotfiles
 export EDITOR=nvim
 export MANPAGER="nvim +Man!"
 export PATH="$PATH:$HOME/.cargo/bin"
-
-export BUN_INSTALL="$HOME/.bun"
-[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
-export PATH="$PATH:$BUN_INSTALL/bin"
 
 function pls {
 	sudo $(fc -nl -1)
