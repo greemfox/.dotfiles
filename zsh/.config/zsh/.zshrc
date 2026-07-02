@@ -6,19 +6,23 @@ zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 bindkey "^U" backward-kill-line
-source "$HOME/.config/minimal.zsh"
+source "$ZDOTDIR/minimal.zsh"
+
+export GOPATH="$XDG_DATA_HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+export MANPAGER="nvim +Man!"
 
 alias ls="ls --color=auto"
 alias l="ls -lhA"
+alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 
 eval "$(zoxide init zsh --cmd=cd)"
 alias fd="fd -E /mnt/c"
 alias va="source ./.venv/bin/activate"
+alias nv="nvim"
 alias mirrate="rate-mirrors --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist"
-
-export COLORTERM=truecolor
-export STOW_DIR=$HOME/.dotfiles
 
 function pls {
 	sudo $(fc -nl -1)
