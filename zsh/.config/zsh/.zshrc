@@ -22,7 +22,7 @@ alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 eval "$(zoxide init zsh --cmd=cd)"
 alias fd="fd -E /mnt/c"
 alias va="source ./.venv/bin/activate"
-alias nv="nvim"
+alias vim="nvim"
 alias mirrate="rate-mirrors --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist"
 
 function pls {
