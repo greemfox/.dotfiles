@@ -13,6 +13,7 @@ source "$ZDOTDIR/minimal.zsh"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$GOPATH/bin:$PATH"
+export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 
 alias ls="ls --color=auto"
