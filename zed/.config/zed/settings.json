@@ -33,6 +33,5 @@
     "Python": {
       "language_servers": ["ty", "ruff", "!basedpyright"],
     },
-    "C": { "format_on_save": "on" },
   },
 }

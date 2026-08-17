@@ -13,4 +13,9 @@
       "ctrl-shift-enter": "editor::NewlineAbove",
     },
   },
+  {
+    "bindings": {
+      "ctrl-s": "workspace::FormatAndSave"
+    }
+  }
 ]
