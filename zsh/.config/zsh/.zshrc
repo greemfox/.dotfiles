@@ -24,7 +24,9 @@ eval "$(zoxide init zsh --cmd=cd)"
 alias fd="fd -E /mnt/c"
 alias va="source ./.venv/bin/activate"
 alias vim="nvim"
-alias mr="rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist"
+
+alias astroterm="astroterm -a 56 -o 93 -cum"
+alias rate-mirrors="rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist"
 
 function pls {
 	sudo $(fc -nl -1)
